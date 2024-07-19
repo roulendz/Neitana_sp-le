@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://dfkxioggvwa8t"]
+
+[ext_resource type="Texture2D" uid="uid://bdttp2ujcmi2n" path="res://assets/sprites/controls/left.png" id="1_bfpn7"]
+[ext_resource type="Texture2D" uid="uid://dwd86xakcidpr" path="res://assets/sprites/controls/transparentLight-left.png" id="2_v17fx"]
+[ext_resource type="Texture2D" uid="uid://dt7fadc4nxq68" path="res://assets/sprites/controls/right.png" id="3_gjip3"]
+[ext_resource type="Texture2D" uid="uid://djei8qioa27ep" path="res://assets/sprites/controls/transparentLight-right.png" id="4_g63ha"]
+[ext_resource type="Texture2D" uid="uid://6h0yllrtl081" path="res://assets/sprites/controls/jump.png" id="5_gcdho"]
+[ext_resource type="Texture2D" uid="uid://dgxn3sjna52su" path="res://assets/sprites/controls/transparentLight-jump.png" id="6_lkkla"]
+[ext_resource type="PackedScene" uid="uid://bqq81kxlj1gp7" path="res://scenes/score_lable.tscn" id="7_l8n4f"]
+[ext_resource type="Script" path="res://scripts/score_lable.gd" id="8_gagem"]
+
+[node name="TouchControls" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_right = 400.0
+offset_bottom = 200.0
+grow_vertical = 0
+scale = Vector2(2, 2)
+
+[node name="Left" type="TouchScreenButton" parent="Control"]
+position = Vector2(32.5, -116)
+scale = Vector2(1.3, 1.3)
+texture_normal = ExtResource("1_bfpn7")
+texture_pressed = ExtResource("2_v17fx")
+action = "move_left"
+visibility_mode = 1
+
+[node name="Right" type="TouchScreenButton" parent="Control"]
+position = Vector2(184.5, -116)
+scale = Vector2(1.3, 1.3)
+texture_normal = ExtResource("3_gjip3")
+texture_pressed = ExtResource("4_g63ha")
+action = "move_right"
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -137.0
+offset_top = -153.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(2, 2)
+
+[node name="Jump" type="TouchScreenButton" parent="Control2"]
+position = Vector2(-63.5, -42.5)
+scale = Vector2(1.3, 1.3)
+texture_normal = ExtResource("5_gcdho")
+texture_pressed = ExtResource("6_lkkla")
+action = "jump"
+
+[node name="TouchScreenButton4" type="TouchScreenButton" parent="Control2"]
+
+[node name="ScoreLable" parent="." instance=ExtResource("7_l8n4f")]
+text = "Punkti: 0"
+script = ExtResource("8_gagem")

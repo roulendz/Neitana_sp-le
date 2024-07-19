@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg1ygra46xt6s"]
+
+[ext_resource type="FontFile" uid="uid://c53kogtyjwsss" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="1_47vns"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0py81"]
+font = ExtResource("1_47vns")
+font_size = 20
+
+[node name="Naudiņas" type="Label"]
+offset_right = 40.0
+offset_bottom = 23.0
+label_settings = SubResource("LabelSettings_0py81")

@@ -1,0 +1,62 @@
+[gd_scene load_steps=7 format=3 uid="uid://dtoxtekici0x"]
+
+[ext_resource type="TileSet" uid="uid://cbsuqycqekgsg" path="res://scenes/levels/game_level_2.tres" id="1_y1fkg"]
+[ext_resource type="Script" path="res://scripts/TileMap.gd" id="2_tplnv"]
+[ext_resource type="PackedScene" uid="uid://dfkxioggvwa8t" path="res://scenes/touch_controls.tscn" id="3_t1gqa"]
+[ext_resource type="PackedScene" uid="uid://c4trv1puev333" path="res://scenes/player.tscn" id="5_vjk66"]
+[ext_resource type="PackedScene" uid="uid://rtvom2c4g8wu" path="res://scenes/PlayerKillZone.tscn" id="6_y2hyw"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_wxoym"]
+
+[node name="GameLevel2" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+unique_name_in_owner = true
+position = Vector2(15, 14)
+tile_set = ExtResource("1_y1fkg")
+format = 2
+layer_0/name = "Trase"
+layer_0/tile_data = PackedInt32Array(0, 0, 0, 4, 393216, 0, 2, 131072, 0, 3, 131072, 0, 65538, 131072, 1, 65539, 131072, 1, 65540, 393216, 1, 65536, 0, 1, 131072, 0, 1)
+script = ExtResource("2_tplnv")
+
+[node name="Node2D" type="Node2D" parent="TileMap"]
+position = Vector2(-15, -10)
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TouchControls" parent="Control" instance=ExtResource("3_t1gqa")]
+visible = false
+
+[node name="Player" parent="." instance=ExtResource("5_vjk66")]
+position = Vector2(21, -22)
+collision_layer = 2
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, -8)
+zoom = Vector2(4, 4)
+limit_smoothed = true
+position_smoothing_enabled = true
+
+[node name="Killzone" parent="." instance=ExtResource("6_y2hyw")]
+position = Vector2(-2690, 565)
+scale = Vector2(0.979881, 1.23221)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Killzone"]
+position = Vector2(27.5544, 49.5045)
+shape = SubResource("WorldBoundaryShape2D_wxoym")
+
+[node name="Naudiņas" type="Node" parent="."]
+
+[node name="Enemies" type="Node" parent="."]

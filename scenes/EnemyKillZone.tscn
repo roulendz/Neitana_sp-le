@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://28ikdp0r6xep"]
+
+[ext_resource type="Script" path="res://scripts/EnemyKillZone.gd" id="1_k4exh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2syf0"]
+size = Vector2(10, 7)
+
+[node name="EnemyKillzone" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_k4exh")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.6
+one_shot = true
+
+[node name="EnemyKillShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_2syf0")
+debug_color = Color(0, 0, 1, 0.419608)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
