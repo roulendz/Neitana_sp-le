@@ -1,12 +1,16 @@
-[gd_scene load_steps=15 format=3 uid="uid://bjpy5ur3ono5g"]
+[gd_scene load_steps=16 format=3 uid="uid://bjpy5ur3ono5g"]
 
 [ext_resource type="Texture2D" uid="uid://bl53gpvg5mh1y" path="res://assets/sprites/slime_green.png" id="1_4nwma"]
 [ext_resource type="Script" path="res://scripts/Enemy.gd" id="1_easrq"]
 [ext_resource type="PackedScene" uid="uid://rtvom2c4g8wu" path="res://scenes/PlayerKillZone.tscn" id="2_7qw0k"]
 [ext_resource type="PackedScene" uid="uid://28ikdp0r6xep" path="res://scenes/EnemyKillZone.tscn" id="4_icbk3"]
+[ext_resource type="AudioStream" uid="uid://bbtykgc0i5sqn" path="res://assets/sounds/slaims_saplacinas.wav" id="5_i1fyk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a58hy"]
 size = Vector2(10, 8)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wehl"]
+size = Vector2(12, 4)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rq50g"]
 size = Vector2(10, 7)
@@ -86,9 +90,22 @@ tracks/5/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("EnemyDestroy:playing")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_yoa2s"]
 resource_name = "destroy"
+length = 0.7
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -109,6 +126,32 @@ tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EnemyDestroy:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -287,10 +330,7 @@ _data = {
 "walk_right": SubResource("Animation_6edhl")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wehl"]
-size = Vector2(14, 4)
-
-[node name="Slaims" type="CharacterBody2D"]
+[node name="Enemy" type="CharacterBody2D" groups=["EnemyGroup"]]
 collision_mask = 3
 script = ExtResource("1_easrq")
 
@@ -306,10 +346,10 @@ position = Vector2(0, -4)
 shape = SubResource("RectangleShape2D_a58hy")
 debug_color = Color(0, 1, 0.701961, 0.419608)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_rh5ak")
-}
+[node name="EnemyDestroy" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_i1fyk")
+max_distance = 1e+09
+bus = &"SFX"
 
 [node name="PlatformDetector" type="RayCast2D" parent="."]
 position = Vector2(0, -7)
@@ -336,3 +376,8 @@ debug_color = Color(0.934609, 0.187431, 0.444929, 0.42)
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_rq50g")
 debug_color = Color(0, 0, 1, 0.419608)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_rh5ak")
+}

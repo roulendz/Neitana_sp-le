@@ -64,33 +64,66 @@ func determine_enemy_placement(cluster_list: Array, min_cluster_size: int, spawn
 	var enemy_placement = {}
 	var random = RandomNumberGenerator.new()
 
+	# Store spawned positions to avoid overlaps
+	var spawned_coords = []
+
 	for cluster_data in cluster_list:
 		var cluster_size = cluster_data["cluster_size"]
-		var cluster_coord = cluster_data["cluster_coord"]  # Array of Vector2i coordinates in the cluster
+		var cluster_coord = cluster_data["cluster_coord"]
 
 		if cluster_size >= min_cluster_size and random.randf() < spawn_chance:
-			var max_enemies = 10 if cluster_size > 6 else 1
+			var max_enemies = 1 if cluster_size > 10 else 1
 			var min_enemies = 1 if max_enemies > 0 else 0
 			var num_enemies = random.randi_range(min_enemies, max_enemies)
-			#print("min:" + str(min_enemies) + " | max:" + str(max_enemies) + " | enem:" + str(num_enemies))
-			var enemy_scene = load("res://scenes/Enemy.tscn")  # Load your enemy scene
+			var enemy_scene = load("res://scenes/Enemy.tscn")
 
 			for _i in range(num_enemies):
-				var random_coord_index = random.randi_range(0, cluster_coord.size() - 1)
-				var spawn_coord = cluster_coord[random_coord_index]
+				var spawn_coord = null
+				var attempts = 0
+				var max_attempts = 10  # Maximum attempts to find a valid spot
 
-				# Get the world position from the tilemap coordinates
-				var spawn_position = tilemap.map_to_local(spawn_coord) 
+				while spawn_coord == null and attempts < max_attempts:
+					var random_coord_index = random.randi_range(0, cluster_coord.size() - 1)
+					var potential_coord = cluster_coord[random_coord_index]
+					var potential_position = tilemap.map_to_local(potential_coord)
 
-				# Instantiate and place the enemy
+					# Check for overlap
+					var overlap = false
+					for coord in spawned_coords:
+						if Vector2(potential_coord).distance_to(Vector2(coord)) < 2:
+							overlap = true
+							break
+
+					
+					if not overlap:
+						spawn_coord = potential_coord
+					attempts += 1
+
+				# If we couldn't find a valid spawn coord, skip this enemy
+				if spawn_coord == null:
+					continue
+
+				# Valid spawn position found
+				spawned_coords.append(spawn_coord)
+				var spawn_position = tilemap.map_to_local(spawn_coord)
+
 				var new_enemy = enemy_scene.instantiate()
-				add_child(new_enemy)  # Add to the scene tree (replace with your parent node if needed)
+				add_child(new_enemy)
 				new_enemy.global_position = spawn_position
 
-			var cluster_key = str(cluster_coord[0])  # Still use the first coord for the key
-			enemy_placement[cluster_key] = num_enemies  # Store for reference (optional)
+			var cluster_key = str(cluster_coord[0])
+			enemy_placement[cluster_key] = num_enemies
 
 	return enemy_placement
+
+
+
+
+
+
+
+
+
 
 	
 	

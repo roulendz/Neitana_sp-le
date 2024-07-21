@@ -10,6 +10,7 @@ const WALK_SPEED = 22.0
 
 var _state := State.WAKEUP
 
+
 @onready var enemy_killzone = $EnemyKillzone
 #@onready var timer = $Timer
 @onready var gravity: int = ProjectSettings.get("physics/2d/default_gravity")
@@ -51,9 +52,9 @@ func _physics_process(delta: float) -> void:
 func destroy() -> void:
 	GameManager.saskaitit_killed_monstrus()
 	_state = State.DEAD
+	#animation_player.play("destroy")
 	velocity = Vector2.ZERO
-	collision_shape.set_disabled(true)  # Disable the collision shape
-	#queue_free()  # Ensure the enemy is removed
+	collision_shape.set_disabled(true)  # Disable the collision shape  # Ensure the enemy is removed
 
 func get_new_animation() -> StringName:
 	var animation_new: StringName

@@ -1,6 +1,8 @@
 extends CharacterBody2D
 
 @onready var animated_sprite = $AnimatedSprite2D
+@onready var animation_player = $AnimationPlayer
+@onready var player_animation_player = %PlayerAnimationPlayer
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -350.0
@@ -16,6 +18,7 @@ func _physics_process(delta):
 
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
+		#player_animation_player.play("jump")
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
@@ -43,3 +46,10 @@ func _physics_process(delta):
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+
+func _on_area_2d_body_entered(body):
+	if body.is_in_group("EnemyGroup"):
+		pass
+		#player_animation_player.play("hurt")
+		
