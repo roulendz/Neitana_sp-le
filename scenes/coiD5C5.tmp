@@ -4,51 +4,51 @@
 [ext_resource type="Script" path="res://scripts/coin.gd" id="1_vguda"]
 [ext_resource type="AudioStream" uid="uid://hxv3svfwkg67" path="res://assets/sounds/coin.wav" id="3_g1e84"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2xs1f"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ppe1"]
 atlas = ExtResource("1_evuih")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_v3bxl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_esab5"]
 atlas = ExtResource("1_evuih")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ruwhp"]
-atlas = ExtResource("1_evuih")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d0ytm"]
-atlas = ExtResource("1_evuih")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_quhk6"]
-atlas = ExtResource("1_evuih")
-region = Rect2(64, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_u1msc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ii4a1"]
 atlas = ExtResource("1_evuih")
 region = Rect2(80, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_al41v"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fkam3"]
+atlas = ExtResource("1_evuih")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kw6ua"]
+atlas = ExtResource("1_evuih")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd611"]
 atlas = ExtResource("1_evuih")
 region = Rect2(96, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_riow7"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4vucv"]
 atlas = ExtResource("1_evuih")
 region = Rect2(112, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l4avi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_jve27"]
 atlas = ExtResource("1_evuih")
 region = Rect2(128, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_s4j6y"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ks2tq"]
 atlas = ExtResource("1_evuih")
 region = Rect2(144, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_twivn"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_5when"]
+atlas = ExtResource("1_evuih")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c66ak"]
 atlas = ExtResource("1_evuih")
 region = Rect2(160, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ltypl"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6wrq4"]
 atlas = ExtResource("1_evuih")
 region = Rect2(176, 0, 16, 16)
 
@@ -56,44 +56,44 @@ region = Rect2(176, 0, 16, 16)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2xs1f")
+"texture": SubResource("AtlasTexture_6ppe1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_v3bxl")
+"texture": SubResource("AtlasTexture_esab5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ruwhp")
+"texture": SubResource("AtlasTexture_ii4a1")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_d0ytm")
+"texture": SubResource("AtlasTexture_fkam3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_quhk6")
+"texture": SubResource("AtlasTexture_kw6ua")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_u1msc")
+"texture": SubResource("AtlasTexture_nd611")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_al41v")
+"texture": SubResource("AtlasTexture_4vucv")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_riow7")
+"texture": SubResource("AtlasTexture_jve27")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_l4avi")
+"texture": SubResource("AtlasTexture_ks2tq")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s4j6y")
+"texture": SubResource("AtlasTexture_5when")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_twivn")
+"texture": SubResource("AtlasTexture_c66ak")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ltypl")
+"texture": SubResource("AtlasTexture_6wrq4")
 }],
 "loop": true,
 "name": &"default",
-"speed": 10.0
+"speed": 12.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_clyb2"]
@@ -110,7 +110,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [true]
 }
 tracks/1/type = "value"
@@ -149,7 +149,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [false]
 }
 tracks/1/type = "value"
@@ -183,7 +183,7 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],

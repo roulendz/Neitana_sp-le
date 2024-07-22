@@ -49,12 +49,18 @@ func _physics_process(delta: float) -> void:
 	if animation != animation_player.current_animation:
 		animation_player.play(animation)
 
+
 func destroy() -> void:
 	GameManager.saskaitit_killed_monstrus()
 	_state = State.DEAD
 	#animation_player.play("destroy")
 	velocity = Vector2.ZERO
-	collision_shape.set_disabled(true)  # Disable the collision shape  # Ensure the enemy is removed
+
+	# Defer disabling the collision shape
+	call_deferred("disable_collision_shape")  
+
+func disable_collision_shape():
+	collision_shape.set_disabled(true) 
 
 func get_new_animation() -> StringName:
 	var animation_new: StringName

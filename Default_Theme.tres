@@ -1,0 +1,20 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://bb8apv2jr3hbr"]
+
+[ext_resource type="FontFile" uid="uid://dbjl1e6kdxpl6" path="res://assets/fonts/PixelOperator8.ttf" id="1_d38ej"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1grcp"]
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[resource]
+default_font = ExtResource("1_d38ej")
+default_font_size = 13
+GridContainer/constants/h_separation = 3
+GridContainer/constants/v_separation = 1
+Panel/styles/panel = SubResource("StyleBoxFlat_1grcp")

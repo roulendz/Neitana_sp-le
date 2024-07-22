@@ -85,7 +85,7 @@ func determine_enemy_placement(cluster_list: Array, min_cluster_size: int, spawn
 				while spawn_coord == null and attempts < max_attempts:
 					var random_coord_index = random.randi_range(0, cluster_coord.size() - 1)
 					var potential_coord = cluster_coord[random_coord_index]
-					var potential_position = tilemap.map_to_local(potential_coord)
+					var _potential_position = tilemap.map_to_local(potential_coord)
 
 					# Check for overlap
 					var overlap = false
@@ -129,6 +129,7 @@ func determine_enemy_placement(cluster_list: Array, min_cluster_size: int, spawn
 	
 
 func _ready():
+	
 	# Assuming your TileMap node is named "TileMap" and under a node named "GameLevel2" in the scene tree.
 	var tilemap = get_parent()
 
@@ -137,8 +138,8 @@ func _ready():
 		#print(tilemap.get_cell_tile_data(0,Vector2i(0,0)))
 		var possible_coords_for_enemies = get_possible_cell_coords_for_enemie_placement(tilemap)
 
-		var min_cluster_size = 5
+		var min_cluster_size = 8
 		var spawn_chance = 1
 
 		var ar_clusters = analyze_tile_clusters(possible_coords_for_enemies)
-		var enemy_placement = determine_enemy_placement(ar_clusters, min_cluster_size, spawn_chance, tilemap)  # Pass the tilemap
+		var _enemy_placement = determine_enemy_placement(ar_clusters, min_cluster_size, spawn_chance, tilemap)  # Pass the tilemap
