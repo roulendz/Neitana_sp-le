@@ -1,0 +1,88 @@
+[gd_scene load_steps=4 format=3 uid="uid://8n0tp2dnpjhf"]
+
+[ext_resource type="PackedScene" uid="uid://d0cxev575a60v" path="res://scenes/UI/leaderbord_users.tscn" id="1_1qyut"]
+[ext_resource type="Script" path="res://scenes/UI/leaderbords_script.gd" id="1_cjkv0"]
+[ext_resource type="Theme" uid="uid://bb8apv2jr3hbr" path="res://Default_Theme.tres" id="1_xi67m"]
+
+[node name="LeaderbordsSceen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cjkv0")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_xi67m")
+theme_override_font_sizes/font_size = 23
+text = "Rezultati"
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+custom_minimum_size = Vector2(500, 600)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 50
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer"]
+custom_minimum_size = Vector2(650, 0)
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/ScrollContainer"]
+layout_direction = 1
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="User" parent="PanelContainer/MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("1_1qyut")]
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="PanelContainer/MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer/MarginContainer/Panel"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ButtonPanel" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -54.0
+offset_top = -31.0
+offset_right = 54.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="GridContainer" type="GridContainer" parent="ButtonPanel"]
+layout_mode = 2
+columns = 2
+
+[node name="Button_Add" type="Button" parent="ButtonPanel/GridContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Update"
+
+[node name="Button_Update" type="Button" parent="ButtonPanel/GridContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "Add"
+
+[connection signal="button_down" from="ButtonPanel/GridContainer/Button_Add" to="." method="press_add"]
