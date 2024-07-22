@@ -1,2 +1,10 @@
 # Godot 4+ specific ignores
 .godot/
+dist/Neitana_spele.exe
+dist/web/index.html
+dist/web/index.pck
+dist/Neitana_spele.exe
+dist/web/index.html
+dist/web/index.pck
+dist/web/index.html
+dist/web/index.pck
