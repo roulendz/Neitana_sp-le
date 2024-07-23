@@ -164,7 +164,7 @@ autoplay = "move"
 position = Vector2(-3209, -425)
 
 [node name="Player" parent="." instance=ExtResource("7_u4ncp")]
-position = Vector2(-3295, -359)
+position = Vector2(42, -27)
 collision_layer = 2
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -276,9 +276,6 @@ max_distance = 300000.0
 [node name="Coin2" parent="." instance=ExtResource("6_aageb")]
 position = Vector2(-2865, -441)
 
-[node name="LevelSwitcher" parent="." instance=ExtResource("12_ojjnd")]
-go_to = 1
-
 [node name="Fruits" parent="." instance=ExtResource("13_v87g1")]
 position = Vector2(36, 26)
 
@@ -286,3 +283,7 @@ position = Vector2(36, 26)
 position = Vector2(387, -1)
 fruit_type = 0
 fruit_color = 3
+
+[node name="LevelSwitcher" parent="." instance=ExtResource("12_ojjnd")]
+position = Vector2(16, 32)
+go_to = 1

@@ -13,6 +13,8 @@ normal = Vector2(0, -1.26)
 
 [node name="GameLevel1" type="Node2D"]
 
+[node name="TouchControls" parent="." instance=ExtResource("3_pv7pr")]
+
 [node name="TileMap" type="TileMap" parent="."]
 unique_name_in_owner = true
 tile_set = ExtResource("1_7lq7f")
@@ -23,23 +25,6 @@ layer_0/tile_data = PackedInt32Array(-262139, 0, 0, -262138, 0, 0, -196602, 0, 1
 [node name="Node2D" type="Node2D" parent="TileMap"]
 position = Vector2(335, 154)
 script = ExtResource("2_wdp5k")
-
-[node name="Control" type="Control" parent="."]
-visible = false
-layout_mode = 3
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -20.0
-offset_top = -40.0
-offset_right = 20.0
-grow_horizontal = 2
-grow_vertical = 0
-
-[node name="TouchControls" parent="Control" instance=ExtResource("3_pv7pr")]
-visible = false
 
 [node name="Player" parent="." instance=ExtResource("4_t4ijq")]
 position = Vector2(107, -71)

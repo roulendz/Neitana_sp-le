@@ -26,6 +26,7 @@ columns = 5
 [node name="Place" type="Label" parent="MarginContainer/GridContainer"]
 custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
+text = "0"
 vertical_alignment = 1
 
 [node name="Username" type="Label" parent="MarginContainer/GridContainer"]
